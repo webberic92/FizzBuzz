@@ -1,27 +1,13 @@
 package fizzBuzz;
 
+import java.util.stream.IntStream;
+
 public class main {
 
 	public static void main(String[] args) {
-		String fizz = "Fizz";
-		String buzz = "Buzz";
 
-		for (int i = 1; i < 101; i++) {
-			String finalString = "";
-
-			if (i % 3 == 0) {
-				finalString = fizz;
-
-			}
-			if (i % 5 == 0) {
-				finalString += buzz;
-			}
-
-			if (i % 3 != 0 && i % 5 != 0) {
-				finalString = String.valueOf(i);
-
-			}
-			System.out.println(finalString);
-		}
+		IntStream.rangeClosed(1, 100)
+	    .mapToObj(i -> i % 3 == 0 ? (i % 5 == 0 ? "FizzBuzz" : "Fizz") : (i % 5 == 0 ? "Buzz" : i))
+	    .forEach(System.out::println);
 	}
 }
